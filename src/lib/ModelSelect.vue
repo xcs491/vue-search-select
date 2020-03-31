@@ -25,7 +25,7 @@
       @keydown.delete="deleteTextOrItem"
     />
     <div
-      class="text"
+      class="text ellipsis"
       :class="textClass" :data-vss-custom-attr="searchTextCustomAttr"
     >{{inputText}}
     </div>
