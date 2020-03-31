@@ -1,4 +1,4 @@
-import { escapedRegExp } from '../utils'
+import { escapedRegExp } from "../utils";
 
 /* mixin for all */
 export default {
@@ -8,7 +8,7 @@ export default {
     },
     name: {
       type: String,
-      default: ''
+      default: ""
     },
     isError: {
       type: Boolean,
@@ -16,7 +16,7 @@ export default {
     },
     customAttr: {
       type: Function,
-      default: () => ''
+      default: () => ""
     },
     isDisabled: {
       type: Boolean,
@@ -24,13 +24,18 @@ export default {
     },
     placeholder: {
       type: String,
-      default: ''
+      default: ""
     },
     filterPredicate: {
       type: Function,
       default: (text, inputText) => {
-        return text.match(escapedRegExp(inputText))
+        const inputTextArray = inputText.split(" ");
+        let matches = 0;
+        inputTextArray.map(x => {
+          text.toLowerCase().includes(x.toLowerCase()) ? matches++ : null;
+        });
+        return inputTextArray.length === matches ? true : false;
       }
     }
   }
-}
+};
